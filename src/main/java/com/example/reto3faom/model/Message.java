@@ -16,13 +16,11 @@ public class Message implements Serializable {
     private String messageText;
 
     @ManyToOne
-    //@JoinColumn(name="messages")
-    @JsonIgnoreProperties({"motorbike","message","reservations"})
+    @JsonIgnoreProperties({"motorbike","message","reserva"})
     private Motorbike motorbike;
 
     @ManyToOne
-    // @JoinColumn(name="messages")
-    @JsonIgnoreProperties({"Client","message","reservations"})
+    @JsonIgnoreProperties({"Client","message","reserva"})
     private Client client;
 
     public Integer getIdMessage() {

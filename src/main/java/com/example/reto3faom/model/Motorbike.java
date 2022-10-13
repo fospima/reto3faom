@@ -20,13 +20,12 @@ public class Motorbike implements Serializable {
     private String description;
 
     @ManyToOne
-    //@JoinColumn(name="category")
     @JsonIgnoreProperties({"motorbike","category"})
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "motorbike")
     @JsonIgnoreProperties({"message","reserva","motorbike","client"})
-    private List<Message> messages;
+    private List<Message> message;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "motorbike")
     @JsonIgnoreProperties({"reserva","message","motorbike","client"})
@@ -80,12 +79,12 @@ public class Motorbike implements Serializable {
         this.category = category;
     }
 
-    public List<Message> getMessages() {
-        return messages;
+    public List<Message> getMessage() {
+        return message;
     }
 
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
+    public void setMessage(List<Message> message) {
+        this.message = message;
     }
 
     public List<Reserva> getReserva() {

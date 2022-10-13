@@ -31,12 +31,10 @@ public class ReservaController {
         return reservaService.save(r);
     }
     @PutMapping("/update")
-    //@ResponseStatus(HttpStatus.Ok)
     public Reserva update(@RequestBody Reserva reserva){
         return reservaService.update(reserva);
     }
     @DeleteMapping("/{id}")
-    //@ResponseStatus(HttpStatus.Ok)
     public boolean delete(@PathVariable("id") int reservaId){
         return reservaService.delete(reservaId);
     }
