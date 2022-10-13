@@ -25,12 +25,12 @@ public class Motorbike implements Serializable {
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "motorbike")
-    @JsonIgnoreProperties({"message","reserva","motorbike","client"})
+    @JsonIgnoreProperties({"message","reservation","motorbike","client"})
     private List<Message> message;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "motorbike")
-    @JsonIgnoreProperties({"reserva","message","motorbike","client"})
-    private List<Reserva> reserva;
+    @JsonIgnoreProperties({"reservation","message","motorbike","client"})
+    private List<Reservation> reservation;
 
     public Integer getId() {
         return id;
@@ -88,11 +88,11 @@ public class Motorbike implements Serializable {
         this.message = message;
     }
 
-    public List<Reserva> getReserva() {
-        return reserva;
+    public List<Reservation> getReservation() {
+        return reservation;
     }
 
-    public void setReserva(List<Reserva> reserva) {
-        this.reserva = reserva;
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
     }
 }

@@ -1,8 +1,8 @@
 package com.example.reto3faom.service;
 
 
-import com.example.reto3faom.model.Reserva;
-import com.example.reto3faom.repository.ReservaRepository;
+import com.example.reto3faom.model.Reservation;
+import com.example.reto3faom.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,38 +10,38 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReservaService {
+public class ReservationService {
 
     @Autowired
-    private ReservaRepository reservaRepository;
+    private ReservationRepository reservationRepository;
 
-    public List<Reserva> getAll(){
-        return reservaRepository.getAll();
+    public List<Reservation> getAll(){
+        return reservationRepository.getAll();
     }
-    public Optional<Reserva> getReserva(int id){
-        return reservaRepository.getReserva(id);
+    public Optional<Reservation> getReservation(int id){
+        return reservationRepository.getReservation(id);
     }
 
-    public Reserva save(Reserva r) {
+    public Reservation save(Reservation r) {
 
         String  created = "created";
         if (r.getIdReservation() == null) {
             r.setStatus(created);
-            return reservaRepository.save(r);
+            return reservationRepository.save(r);
         } else {
-            Optional<Reserva> e = reservaRepository.getReserva(r.getIdReservation());
+            Optional<Reservation> e = reservationRepository.getReservation(r.getIdReservation());
 
             if (e.isPresent()) {
                 return r;
             }else{
-                return reservaRepository.save(r);
+                return reservationRepository.save(r);
             }
         }
 
     }
-    public Reserva update(Reserva r){
+    public Reservation update(Reservation r){
         if(r.getIdReservation()!=null){
-            Optional<Reserva> q = reservaRepository.getReserva(r.getIdReservation());
+            Optional<Reservation> q = reservationRepository.getReservation(r.getIdReservation());
             if(q.isPresent()){
                 if(r.getIdReservation()!=null) {
                     q.get().setIdReservation(r.getIdReservation());
@@ -52,7 +52,7 @@ public class ReservaService {
                 if(r.getDevolutionDate()!=null) {
                     q.get().setDevolutionDate(r.getDevolutionDate());
                 }
-                reservaRepository.save(q.get());
+                reservationRepository.save(q.get());
                 return q.get();
             }else{
                 return r;
@@ -63,9 +63,9 @@ public class ReservaService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Reserva>p= reservaRepository.getReserva(id);
+        Optional<Reservation>p= reservationRepository.getReservation(id);
         if(p.isPresent()){
-            reservaRepository.delete(p.get());
+            reservationRepository.delete(p.get());
             flag=true;
         }
         return flag;

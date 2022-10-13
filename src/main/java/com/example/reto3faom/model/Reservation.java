@@ -7,8 +7,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "reserva")
-public class Reserva implements Serializable {
+@Table(name = "reservation")
+public class Reservation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +19,12 @@ public class Reserva implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties({"reserva"})
+    @JsonIgnoreProperties({"reservation"})
     private Motorbike motorbike;
 
     @ManyToOne
     @JoinColumn(name="idClient")
-    @JsonIgnoreProperties({"reserva", "message","client"})
+    @JsonIgnoreProperties({"reservation", "message","client"})
     private Client client;
     private String score;
 
