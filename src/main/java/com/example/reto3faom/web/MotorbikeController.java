@@ -31,10 +31,12 @@ public class MotorbikeController {
         return motorbikeService.save(m);
     }
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public Motorbike update(@RequestBody Motorbike motorbike){
         return motorbikeService.update(motorbike);
     }
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int motorbikeId){
         return motorbikeService.delete(motorbikeId);
     }
