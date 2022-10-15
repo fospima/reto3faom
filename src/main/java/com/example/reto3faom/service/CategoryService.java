@@ -47,8 +47,8 @@ public class CategoryService {
                 if(c.getDescription()!=null){
                     t.get().setDescription(c.getDescription());
                 }
-                if(c.getMotorbike()!=null) {
-                    t.get().setMotorbike(c.getMotorbike());
+                if(c.getMotorbikes()!=null) {
+                    t.get().setMotorbikes(c.getMotorbikes());
                 }
                 categoryRepository.save(t.get());
                 return t.get();

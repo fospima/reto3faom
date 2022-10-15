@@ -17,15 +17,15 @@ public class MotorbikeService {
     public List<Motorbike> getAll(){
         return motorbikeRepository.getAll();
     }
-    public Optional<Motorbike> getMotorbike(int id){
-        return motorbikeRepository.getMotorbike(id);
+    public Optional<Motorbike> getMotorbikes(int id){
+        return motorbikeRepository.getMotorbikes(id);
     }
 
     public Motorbike save(Motorbike m){
         if(m.getId()==null){
             return motorbikeRepository.save(m);
         }else{
-            Optional<Motorbike> e = motorbikeRepository.getMotorbike(m.getId());
+            Optional<Motorbike> e = motorbikeRepository.getMotorbikes(m.getId());
             if(e.isPresent()){
                 return m;
             }else{
@@ -36,7 +36,7 @@ public class MotorbikeService {
     }
     public Motorbike update(Motorbike m){
         if(m.getId()!=null){
-            Optional<Motorbike> x = motorbikeRepository.getMotorbike(m.getId());
+            Optional<Motorbike> x = motorbikeRepository.getMotorbikes(m.getId());
             if(x.isPresent()){
                 if (m.getId() != null) {
                     x.get().setId(m.getId());
@@ -70,7 +70,7 @@ public class MotorbikeService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Motorbike>m= motorbikeRepository.getMotorbike(id);
+        Optional<Motorbike>m= motorbikeRepository.getMotorbikes(id);
         if(m.isPresent()){
             motorbikeRepository.delete(m.get());
             flag=true;

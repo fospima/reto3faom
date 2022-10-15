@@ -5,23 +5,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
     private String messageText;
 
     @ManyToOne
-    @JsonIgnoreProperties({"motorbike","message","reservation"})
+    @JoinColumn(name = "motorbikeId")
+    @JsonIgnoreProperties({"messages","reservations"})
     private Motorbike motorbike;
 
     @ManyToOne
-    @JsonIgnoreProperties({"Client"})
-    //@JsonIgnoreProperties({"Client","message","reservation"})
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"messages","reservations"})
+    //@JsonIgnoreProperties({"messages","reservation"})
     private Client client;
 
     public Integer getIdMessage() {

@@ -17,7 +17,7 @@ public class MotorbikeRepository {
     public List<Motorbike> getAll(){
         return (List<Motorbike>) motorbikeCrudRepository.findAll();
     }
-    public Optional<Motorbike> getMotorbike(int id){
+    public Optional<Motorbike> getMotorbikes(int id){
         return motorbikeCrudRepository.findById(id);
     }
     public Motorbike save(Motorbike m){

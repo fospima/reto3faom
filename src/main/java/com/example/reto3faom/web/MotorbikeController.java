@@ -22,8 +22,8 @@ public class MotorbikeController {
         return motorbikeService.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Motorbike> getMotorbike(@PathVariable("id") int motorbikeId){
-        return motorbikeService.getMotorbike(motorbikeId);
+    public Optional<Motorbike> getMotorbikes(@PathVariable("id") int motorbikeId){
+        return motorbikeService.getMotorbikes(motorbikeId);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
